@@ -64,6 +64,10 @@ function mainMenu(person, people) {
     // Routes our application based on the user's input
     switch (displayOption) {
         case "info":
+            // function displayPerson(person) {
+                
+            
+        
             //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
@@ -88,12 +92,19 @@ function mainMenu(person, people) {
         case "quit":
             // Stop application execution
             return;
+        case "test":
+            let findPersonDescendants = `currentSpouse: ${person.currentSpouse}\n`;
+            personInfo += `parents: ${person.parents}\n`;  
+            // test your functions here :) 
+            let results = tester(people)
+            break;
         default:
             // Prompt user again. Another instance of recursion
             return mainMenu(person, people);
     }
 }
 // End of mainMenu()
+
 
 /**
  * This function is used when searching the people collection by
@@ -140,8 +151,16 @@ function displayPeople(people) {
 function displayPerson(person) {
     let personInfo = `First Name: ${person.firstName}\n`;
     personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `Gender: ${person.gender}\n`;
+    personInfo += `dob: ${person.dob}\n`;
+    personInfo += `height: ${person.height}\n`;
+    personInfo += `weight: ${person.weight}\n`;
+    personInfo += `eyeColor: ${person.eyeColor}\n`;
+    personInfo += `Occupation: ${person.occupation}\n`;
+    personInfo += `parents: ${person.parents}\n`;
+    personInfo += `currentSpouse: ${person.currentSpouse}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
-    alert(personInfo);
+    return personInfo;
 }
 // End of displayPerson()
 
@@ -180,7 +199,31 @@ function yesNo(input) {
 function chars(input) {
     return true; // Default validation only
 }
-// End of chars()
+// // End of chars()
 
-//////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
-// Any additional functions can be written below this line 👇. Happy Coding! 😁
+// //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
+// // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+
+// // I know this will need to go in there so thhat if invalid input is put in it prompts the user to enter something correctly 
+// /* 
+// let userInput = prompt(
+//     "press 1 to select child. \n  press 2 to select other thing"
+// );
+
+// switch(key) {
+//     case value:
+//         //Logic here
+//         break;
+//     case value:
+//         //Logic here
+//         break;
+//     default:
+//         break;
+// }
+
+function tester(people){
+    return people[10];
+}
+
+
