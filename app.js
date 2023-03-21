@@ -64,21 +64,21 @@ function mainMenu(person, people) {
     // Routes our application based on the user's input
     switch (displayOption) {
         case "info":
-            // function displayPerson(person) {
-                
-            
-        
+          
+           
             //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
             alert(personInfo);
             break;
         case "family":
+      
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people);
             alert(personFamily);
             break;
+
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
@@ -93,8 +93,21 @@ function mainMenu(person, people) {
             // Stop application execution
             return;
         case "test":
-            let findPersonDescendants = `currentSpouse: ${person.currentSpouse}\n`;
-            personInfo += `parents: ${person.parents}\n`;  
+            function findPersonFamily(people) {
+                let parents = people.filter(function(person){
+                        if (people.parents === person.id){
+                            return true;
+                         
+                        }
+                });
+                return parents;
+            
+                
+            }
+            
+            console.log (findPersonFamily(person));    
+
+
             // test your functions here :) 
             let results = tester(people)
             break;
@@ -227,3 +240,20 @@ function tester(people){
 }
 
 
+function findPersonFamily(people) {
+    let parents = people.filter(function(person){
+            if (people.parents === person.id){
+                return true;
+             
+            }
+    });
+    return parents;
+
+    
+}
+
+console.log (findPersonFamily(person));
+
+
+let findPersonFamily = people.filter(function["person"][0]) 
+//         for (let i = 0; i < people.length; i++) {}
