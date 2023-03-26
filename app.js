@@ -29,6 +29,8 @@ function app(people) {
             searchResults = searchByName(people);
             break;
         case "no":
+
+    
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
             searchResults = searchByTraits(people);
@@ -72,6 +74,10 @@ function mainMenu(person, people) {
             alert(personInfo);
             break;
         case "family":
+            findParents
+            findSpouse
+            findSiblings
+            .join 
         
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
@@ -95,7 +101,7 @@ function mainMenu(person, people) {
         case "test":
 
             // test your functions here :) 
-            let result = findSpouse(person[0], people)
+            let result = findDecedents(person[0], people)
             break;
         default:
             // Prompt user again. Another instance of recursion
@@ -204,30 +210,31 @@ function chars(_input) {
 // // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
 
-// // I know this will need to go in there so thhat if invalid input is put in it prompts the user to enter something correctly 
-// /* 
-// let userInput = prompt(
-//     "press 1 to select child. \n  press 2 to select other thing"
+
+let userInput = prompt( 
+    "To search by specific traits please read the following options and select the specifc trait. \n Press 1 to select gender. \n  Press 2 to select eyeColor. \n press  "
 // )
 
-//This will be for the traits
-// switch(key) {
-//     case value:
-//         //Logic here
-//         break;
-//     case value:
-//         //Logic here
-//         break;
-//     default:
-//         break;
-// }
+  this will be the traits
+ switch(searchByTraits) {
+     case "1"://switrchcase for gender
+        
+         break;
+     case "2"://switchcase for eyecolor
+         //Logic here
+         break;
+     case "3": //switch case for occupation 
+         //Logic here
+     default:
+         break;
+}
 
-// function tester(people){
-//     return people[10];
-// }
+
+
+
 
 // Javascript is strict once you identify your scope you cannot take it back.
-
+// These are all the fuctions to find the family members.
 function findSpouse (person,people) {
     let spouse = people.filter(element => {  // using element here is just a place holder, for when people(the array) is ran through it filters out  and places the  information in the bucket element.
         if (person.currentSpouse === element.id) {
@@ -242,7 +249,7 @@ function findSpouse (person,people) {
     }
     // return spouse;
     }
-
+//_____________________________________________________________________//
 function findParents(person, people){
     let parents = people.filter (el =>  {
         if (person.parents.includes(el.id)) {
@@ -250,19 +257,65 @@ function findParents(person, people){
         }
         
     })
-    if (parents.length === 0)
+    if (parents.length === 0) {
+            alert (`${person.firstName} ${person.lastName}  does not have parents, They are orphans.  :(`)
+    }else{
+        alert (`${person.firstName} ${person.lastName} parents are  ${ parents[0].firstName} ${spouse[0].lastName}`)
+    
+    }
     console.log(parents)
 }
+//_____________________________________________________________________//
+
+function findSiblings (person, people) {
+    let siblings = people.filter(el => {
+        if (person.parents.includes(el.parents[0]))
+            return true;
 
 
 
-let siblings = people.filter(el =>{
-person.parents.includes(el.parents[0])
-return true;
+    })
+    if (siblings.length === 0) {
+        alert (`${person.firstName} ${person.lastName}  does not have siblings, they are an only child.  :( `)
+    }else{
+        alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName} ${siblings[0,1,2,3].lastName}`) // cannot get it to pop alll the siblings names
 
+}
+    console.log(siblings)
 
+}
 
-})
+//_______________________________________________//
 
+function  findDecedents (person, people){ 
+    let descendents = people.map( el => {
+        for (let i =0; i < person.dob; i++){
+            if (person.dob <= person.id (el[0]))    
+            return true;
+        }
+    })
+    console.log(descendents)
+}
 
+//________________________________//
 
+//Search for eyecolor function
+function eyeColors (people){
+    let userPicks = promptFor (" What is the eye color you are looking for?", chars);
+    let foundeyes = people.filter(el => {
+        if (el.eyeColor === userpicks){
+            return true;
+        }
+
+    })
+    console.log(userPicks)
+}
+
+//______________//
+
+//search for gender
+
+function sortByGender (people) {
+    let pickedGender = promptFor("What gender are you looking for?");
+    let 
+}
