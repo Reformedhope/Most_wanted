@@ -72,7 +72,7 @@ function mainMenu(person, people) {
             alert(personInfo);
             break;
         case "family":
-      
+        
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people);
@@ -93,23 +93,9 @@ function mainMenu(person, people) {
             // Stop application execution
             return;
         case "test":
-            function findPersonFamily(people) {
-                let parents = people.filter(function(person){
-                        if (people.parents === person.id){
-                            return true;
-                         
-                        }
-                });
-                return parents;
-            
-                
-            }
-            
-            console.log (findPersonFamily(person));    
-
 
             // test your functions here :) 
-            let results = tester(people)
+            let result = findSpouse(person[0], people)
             break;
         default:
             // Prompt user again. Another instance of recursion
@@ -206,10 +192,10 @@ function yesNo(input) {
 /**
  * This helper function operates as a default callback for promptFor's validation.
  * Feel free to modify this to suit your needs.
- * @param {String} input        A string.
+ * @param {String} _input        A string.
  * @returns {Boolean}           Default validation -- no logic yet.
  */
-function chars(input) {
+function chars(_input) {
     return true; // Default validation only
 }
 // // End of chars()
@@ -222,8 +208,9 @@ function chars(input) {
 // /* 
 // let userInput = prompt(
 //     "press 1 to select child. \n  press 2 to select other thing"
-// );
+// )
 
+//This will be for the traits
 // switch(key) {
 //     case value:
 //         //Logic here
@@ -235,25 +222,47 @@ function chars(input) {
 //         break;
 // }
 
-function tester(people){
-    return people[10];
+// function tester(people){
+//     return people[10];
+// }
+
+// Javascript is strict once you identify your scope you cannot take it back.
+
+function findSpouse (person,people) {
+    let spouse = people.filter(element => {  // using element here is just a place holder, for when people(the array) is ran through it filters out  and places the  information in the bucket element.
+        if (person.currentSpouse === element.id) {
+            return true;
+        }
+
+    })
+    if (spouse.length === 0) {
+        alert(`${person.firstName}  ${person.lastName} does not have a spouse. :(`)
+    }else{ 
+        alert (`${person.firstName}  ${person.lastName} is marreid to ${spouse[0].firstName} ${spouse[0].lastName}`) // by placeing 0 in brackets here it is allowing you to pass in what was being held.
+    }
+    // return spouse;
+    }
+
+function findParents(person, people){
+    let parents = people.filter (el =>  {
+        if (person.parents.includes(el.id)) {
+            return true; 
+        }
+        
+    })
+    if (parents.length === 0)
+    console.log(parents)
 }
 
 
-function findPersonFamily(people) {
-    let parents = people.filter(function(person){
-            if (people.parents === person.id){
-                return true;
-             
-            }
-    });
-    return parents;
 
-    
-}
-
-console.log (findPersonFamily(person));
+let siblings = people.filter(el =>{
+person.parents.includes(el.parents[0])
+return true;
 
 
-let findPersonFamily = people.filter(function["person"][0]) 
-//         for (let i = 0; i < people.length; i++) {}
+
+})
+
+
+

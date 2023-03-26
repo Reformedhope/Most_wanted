@@ -28,4 +28,4 @@ let result = kids.reduce( (prevValue, currentKid) => {
 
 let results = kids.filter( (kid) => (kid.age === 15) ) // [{age:15}]
 
-let resultArray = arrayName.filter( item) => (condition )
+let resultArray = arrayName.filter( item => (condition ))
