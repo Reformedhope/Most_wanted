@@ -316,6 +316,11 @@ function eyeColors (people){
 //search for gender
 
 function sortByGender (people) {
-    let pickedGender = promptFor("What gender are you looking for?");
-    let 
+    let pickedGender = promptFor("What gender are you looking for?", chars);
+    let foundGender = people.filter(el =>{
+        if(el.gender == pickedGender){
+            return true;
+        }
+    })
 }
+
