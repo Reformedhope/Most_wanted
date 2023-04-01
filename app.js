@@ -88,8 +88,8 @@ function mainMenu(person, people) {
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
-            let personDescendants = findPersonDescendants(person[0], people);
-            alert(personDescendants);
+            let personDescendants = findDecedents(person[0], people);
+            displayPeople(personDescendants);
             break;
         case "restart":
             // Restart app() from the very beginning
@@ -211,26 +211,6 @@ function chars(_input) {
 
 
 
-let userInput = prompt( 
-    "To search by specific traits please read the following options and select the specifc trait. \n Press 1 to select gender. \n  Press 2 to select eyeColor. \n press  "
-// )
-
-  this will be the traits
- switch(searchByTraits) {
-     case "1"://switrchcase for gender
-        
-         break;
-     case "2"://switchcase for eyecolor
-         //Logic here
-         break;
-     case "3": //switch case for occupation 
-         //Logic here
-     default:
-         break;
-}
-
-
-
 
 
 // Javascript is strict once you identify your scope you cannot take it back.
@@ -287,28 +267,73 @@ function findSiblings (person, people) {
 
 //_______________________________________________//
 
-function  findDecedents (person, people){ 
-    let descendents = people.map( el => {
-        for (let i =0; i < person.dob; i++){
-            if (person.dob <= person.id (el[0]))    
-            return true;
+function  findDecedents (person, people){
+    let descendents = people.filter (el => {
+        if (el.parents.includes(person.id)) {
+            return true
         }
+        
+        
     })
+    if (descendents[0]){
+        descendents.forEach(el => {
+           descendents = descendents.concat(findDecedents(el, people))
+        });
+    }
     console.log(descendents)
+        return descendents
 }
 
 //________________________________//
 
+
+
+
+function searchByTraits(people) {
+    let userInput = prompt( 
+        "To search by specific traits please read the following options and select the specifc trait. \n Press 1 to select gender. \n  Press 2 to select eyeColor. \n press 3 to select occupation.  "
+    )
+    let searchResults
+    
+    //   this will be the traits
+        switch(userInput) {
+             case "1"://switrchcase for gender
+                searchResults = sortByGender(people)
+                break;
+            case "2"://switchcase for eyecolor
+             //Logic here
+                searchResults = eyeColors(people)
+                break;
+            case "3": //switch case for occupation 
+             //Logic here
+             searchResults = searchOccupation(people)
+            default:
+                 break;
+        }
+    
+    let additionalSearch = promptFor("Would you like to narrow down your search?", yesNo)
+    if (additionalSearch === "yes") {
+        searchByTraits(searchResults)
+    }
+    
+    }
+
+
+
+
+
+
 //Search for eyecolor function
 function eyeColors (people){
-    let userPicks = promptFor (" What is the eye color you are looking for?", chars);
-    let foundeyes = people.filter(el => {
-        if (el.eyeColor === userpicks){
+    let userPicks = promptFor (" What is the eye color you are looking for?", eyeValid);
+    let foundEyes = people.filter(el => {
+        if (el.eyeColor === userPicks){
             return true;
         }
 
     })
-    console.log(userPicks)
+    displayPeople(foundEyes)
+    return foundEyes
 }
 
 //______________//
@@ -316,11 +341,52 @@ function eyeColors (people){
 //search for gender
 
 function sortByGender (people) {
-    let pickedGender = promptFor("What gender are you looking for?", chars);
+    let pickedGender = promptFor("What gender are you looking for?", genderValid);
     let foundGender = people.filter(el =>{
-        if(el.gender == pickedGender){
+        if(el.gender === pickedGender){
             return true;
+
         }
     })
+   displayPeople(foundGender)
+   return foundGender
 }
 
+//_______________________Search by occupation ___________//
+
+function searchOccupation (people) {
+    let pickedOccupation = promptFor("What  is the occupation you are searcing for ?", chars);
+    let foundOccupation = people.filter(el =>{
+        if(el.occupation === pickedOccupation){
+            return true;
+
+        }
+    })
+   displayPeople(foundOccupation)
+   return foundOccupation
+
+
+}
+
+
+
+
+
+//Validation helpers //
+function genderValid(input) {
+    if (input === "male" || input === "female"){
+    return true; // Default validation only
+    }
+}
+
+function eyeValid(input) {
+    if (input === "brown" || input === "blue"|| input === "black"|| input === "hazel"|| input === "green"){
+    return true; // Default validation only
+    }
+}
+
+function OccupationValid(input) {
+    if (input === "landscaper" || input === "programmer"|| input === "nurse"|| input === "assistant"|| input === "doctor"|| input === "politician"){
+    return true; // Default validation only
+    }
+}
