@@ -240,7 +240,7 @@ function findParents(person, people){
     if (parents.length === 0) {
             alert (`${person.firstName} ${person.lastName}  does not have parents, They are orphans.  :(`)
     }else{
-        alert (`${person.firstName} ${person.lastName} parents are  ${ parents[0].firstName} ${spouse[0].lastName}`)
+        displayPeople (`${person.firstName} ${person.lastName} parents are  ${ parents[0].firstName} ${spouse[0].lastName}`)
     
     }
     console.log(parents)
@@ -258,7 +258,9 @@ function findSiblings (person, people) {
     if (siblings.length === 0) {
         alert (`${person.firstName} ${person.lastName}  does not have siblings, they are an only child.  :( `)
     }else{
-        alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName}  ${siblings[0].lastName} ${ siblings[2].firstName} ${siblings[2].lastName} ${ siblings[3].firstName} ${siblings[3].lastName}`) // cannot get it to pop alll the siblings names
+        displayPeople (siblings)
+        return siblings
+        // alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName}  ${siblings[0].lastName} ${ siblings[2].firstName} ${siblings[2].lastName} ${ siblings[3].firstName} ${siblings[3].lastName}`) // cannot get it to pop alll the siblings names
 
 }
     console.log(siblings)
