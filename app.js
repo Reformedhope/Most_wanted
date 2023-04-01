@@ -101,7 +101,7 @@ function mainMenu(person, people) {
         case "test":
 
             // test your functions here :) 
-            let result = findSiblings(person[0], people)
+            let result = findParents(person[0], people)
             break;
         default:
             // Prompt user again. Another instance of recursion
@@ -240,7 +240,7 @@ function findParents(person, people){
     if (parents.length === 0) {
             alert (`${person.firstName} ${person.lastName}  does not have parents, They are orphans.  :(`)
     }else{
-        displayPeople (`${person.firstName} ${person.lastName} parents are  ${ parents[0].firstName} ${spouse[0].lastName}`)
+        displayPeople (`${person.firstName} ${person.lastName} parents are  ${ parents[0].firstName} ${parents[0].lastName}`)
     
     }
     console.log(parents)
