@@ -240,7 +240,8 @@ function findParents(person, people){
     if (parents.length === 0) {
             alert (`${person.firstName} ${person.lastName}  does not have parents, They are orphans.  :(`)
     }else{
-        displayPeople (`${person.firstName} ${person.lastName} parents are  ${ parents[0].firstName} ${parents[0].lastName}`)
+      displayPeople (parents)
+      return parents
     
     }
     console.log(parents)
@@ -357,7 +358,7 @@ function sortByGender (people) {
 //_______________________Search by occupation ___________//
 
 function searchOccupation (people) {
-    let pickedOccupation = promptFor("What  is the occupation you are searcing for ?", chars);
+    let pickedOccupation = promptFor("What  is the occupation you are searcing for ?", OccupationValid);
     let foundOccupation = people.filter(el =>{
         if(el.occupation === pickedOccupation){
             return true;
