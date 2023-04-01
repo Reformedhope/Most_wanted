@@ -101,7 +101,7 @@ function mainMenu(person, people) {
         case "test":
 
             // test your functions here :) 
-            let result = findDecedents(person[0], people)
+            let result = findSiblings(person[0], people)
             break;
         default:
             // Prompt user again. Another instance of recursion
@@ -258,7 +258,7 @@ function findSiblings (person, people) {
     if (siblings.length === 0) {
         alert (`${person.firstName} ${person.lastName}  does not have siblings, they are an only child.  :( `)
     }else{
-        alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName} ${siblings[0,1,2,3].lastName}`) // cannot get it to pop alll the siblings names
+        alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName} ${siblings[0].lastName} ${ siblings[1].firstName} ${siblings[1].lastName}`) // cannot get it to pop alll the siblings names
 
 }
     console.log(siblings)
