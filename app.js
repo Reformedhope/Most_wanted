@@ -258,7 +258,7 @@ function findSiblings (person, people) {
     if (siblings.length === 0) {
         alert (`${person.firstName} ${person.lastName}  does not have siblings, they are an only child.  :( `)
     }else{
-        alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName} ${siblings[0].lastName} ${ siblings[1].firstName} ${siblings[1].lastName}`) // cannot get it to pop alll the siblings names
+        alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName}  ${siblings[0].lastName} ${ siblings[2].firstName} ${siblings[2].lastName} ${ siblings[3].firstName} ${siblings[3].lastName}`) // cannot get it to pop alll the siblings names
 
 }
     console.log(siblings)
