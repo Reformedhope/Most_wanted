@@ -101,7 +101,7 @@ function mainMenu(person, people) {
         case "test":
 
             // test your functions here :) 
-            let result = findParents(person[0], people)
+            let result = findDecedents(person[0], people)
             break;
         default:
             // Prompt user again. Another instance of recursion
@@ -261,7 +261,11 @@ function findSiblings (person, people) {
     }else{
         displayPeople (siblings)
         return siblings
-        // alert (`${person.firstName} ${person.lastName} siblings are  ${ siblings[0].firstName}  ${siblings[0].lastName} ${ siblings[2].firstName} ${siblings[2].lastName} ${ siblings[3].firstName} ${siblings[3].lastName}`) // cannot get it to pop alll the siblings names
+        // If conditionals return true ALWAYS!
+        //Else conditionals  return if the statement is false. 
+        //Hence being that if they have no siblings it will return my statement above
+        // Else will go through the arra and return the people who are siblings. (kinda like a for loop)
+        
 
 }
     console.log(siblings)
@@ -280,10 +284,11 @@ function  findDecedents (person, people){
     })
     if (descendents[0]){
         descendents.forEach(el => {
-           descendents = descendents.concat(findDecedents(el, people))
+           descendents = descendents.concat(findDecedents(el, people))// using recursion,  Amy helped me with this. 
         });
     }
     console.log(descendents)
+        displayPeople(descendents)
         return descendents
 }
 
